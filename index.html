@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head> <title>
+    HOTEL REGISTRATION
+  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="th.css">
+  <script>
+    function displayAmount() {
+  var roomType = document.getElementById("roomType").value;
+  var amountDisplay = document.getElementById("amountDisplay");
+  var tot=0;
+  if (roomType === "deluxe") {
+    amountDisplay.textContent = "Amount: 2500.00";
+  } else if (roomType === "suite") {
+    amountDisplay.textContent = "Amount: 4000.00";
+   
+  } else {
+    amountDisplay.textContent = "";
+  }
+}
+     function displayamount(){
+      var tot=0;
+      var aminity=document.getElementById("aminity").value;
+      var amount = document.getElementById("amount");
+      if(aminity==="AC")
+      {
+        amount.textContent="Amount: 1000.00"
+      }
+      else if(aminity==="Locker")
+      {
+        amount.textContent="Amount: 300.00"
+      }
+      else{
+        amount.textContent="";
+      }
+     }
+     function calculateBalance() {
+      var roomType = document.getElementById("roomType").value;
+      var aminity=document.getElementById("aminity").value;
+      var tot=0;
+      var total=0;
+  if (roomType === "deluxe") {
+    tot=2500;
+  } else if (roomType === "suite") {
+    tot=4000;
+  } 
+  if(aminity==="AC")
+      {
+        total=1000;
+      }
+      else if(aminity==="Locker")
+      {
+        total=300;
+      }
+  var advancePaid = parseFloat(document.getElementById("advancePaid").value);
+  var balanceAmount =tot+total-advancePaid;
+  document.getElementById("balanceAmount").textContent = "Balance Amount: " + balanceAmount.toFixed(2);
+}
+function final()
+{
+  var roomType = document.getElementById("roomType").value;
+      var aminity=document.getElementById("aminity").value;
+      var tot=0;
+      var total=0;
+  if (roomType === "deluxe") {
+    tot=2500;
+  } else if (roomType === "suite") {
+    tot=4000;
+  } 
+  if(aminity==="AC")
+      {
+        total=1000;
+      }
+      else if(aminity==="Locker")
+      {
+        total=300;
+      }
+      var days=parseFloat(document.getElementById("days").value);
+      var roomrent=tot*days;
+      var aminityrent=total*days
+      var totall=roomrent+aminityrent;
+      document.getElementById("roomrent").textContent = "Room Rent: " + roomrent.toFixed(2);
+      document.getElementById("aminityrent").textContent = "Amnity Rent " + aminityrent.toFixed(2);
+      document.getElementById("totall").textContent = "Total amount to be paid " + totall.toFixed(2);
+      
+}
+function add()
+{
+  var persons=parseFloat(document.getElementById("persons").value);
+  var days=parseFloat(document.getElementById("days").value);
+  var addcharge=(persons-2)*days*1000;
+  document.getElementById("addcharge").textContent = "Total additional charges $" + addcharge.toFixed(2);
+
+}
+
+
+  </script>
+    <body>
+      <div class="div-ex">
+        <div class="welcome">
+          <img class="backimg" src="download (1).jpg"  >
+          <div class="titlee">
+            <p>WELCOME TO HOTEL REGISTRATION</p>
+          </div>
+        </div>
+        
+        <div class="back"><p
+        class="heading">CUSTOMER INFORMATION</p>
+        <div class="frst">
+          <label for="name" style="color: white;" >Enter customer name</label>
+          <input id="name" class="customername" type="text" placeholder="Name" required >
+          <label style="color: white;" >Enter check-in date</label>
+          <input class="date" type="date" placeholder=" MONTH/DAY/YEAR" required>
+          <label for="roomType" style="color: white;">Select a room type:</label>
+          <select id="roomType" name="roomType" onchange="displayAmount()" class="type">
+            <option value="none"> Select</option>
+            <option value="deluxe">Deluxe Room</option>
+            <option value="suite">Suite Room</option>
+          </select>
+          <div id="amountDisplay" style="color: white;"></div>
+            
+
+          <div class="note">
+          </div>
+        </div>
+        <p style="color: white;">
+          NOTE:upto 2 people No charges in cost
+        </p>
+        <p style="color: white;">
+          per day cost for extra person :1000/-
+        </p>
+      </div>
+        <div class="col"><p class="room">ROOMS AVAILABILITY</p>
+          <div class="sec">
+            <label for="aminities" style="color: white;">select type of aminities</label>
+            <select id="aminity" name="aminity" onchange="displayamount()" class="aminities">
+              <option value="none"> Select</option>
+             <option value="AC">AC</option>
+              <option value="Locker">Locker</option>
+            </select>
+            <div id="amount" style="color: white;"></div>
+           
+            <label for="days" style="color: white;" >Enter total days of stay</label>
+<input class="days" type="numeric" placeholder=" No.Of Days" id="days" onchange="final()" required>
+          
+<label for="persons" style="color: white;" >Enter total number of persons</label>
+          <input class="persons" id="persons" type="NUMERIC" placeholder=" No.Of Persons" onchange="add()" required>
+            
+          </div>
+          
+        </div>
+        <div class="pay"><p class="pa">PAYMENT</p>
+        <div class="thr">
+          <label for="advancePaid" style="color: white;">Advance Amount Paid: </label>
+<input class="ap" placeholder="Advance amount" type="number" id="advancePaid" onchange="calculateBalance()">
+<div id="balanceAmount" style="color: white; margin-bottom: 25px;"></div>
+<div id="roomrent" style="color: white; margin-bottom: 25px;"></div>
+<div id="aminityrent" style="color: white; margin-bottom: 25px;"></div>
+<div id="totall" style="color:white;margin-bottom: 25px; margin-right: 5px;"></div>
+<div id="addcharge" style="color: white;"></div>
+
+        </div>
+        <button class="submit">submit</button>
+        <p style="color: white;">***THANKS FOR CHOOSING OUR HOTEL FOR YOUR STAY***</p>
+        
+      </div>
+      
+
+    </body>
+  </head>
+</html>
